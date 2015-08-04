@@ -2,5 +2,7 @@
 platform :ios, '8.0'
 
 target 'Photo Bombers' do
+
 	pod 'SimpleAuth/Instagram'
+    pod 'SAMCache'
 end

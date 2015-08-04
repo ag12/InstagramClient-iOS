@@ -1,14 +1,14 @@
 //
-//  AMPhotoCell.h
+//  AMDetailViewController.h
 //  Photo Bombers
 //
-//  Created by ag07 on 25/05/15.
+//  Created by Amir Ghoreshi on 04/08/15.
 //  Copyright (c) 2015 AM. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AMPhotoCell : UICollectionViewCell
+@interface AMDetailViewController : UIViewController
+
 @property (nonatomic) NSDictionary *photo;
-@property (nonatomic) UIImageView *imageView;
 @end

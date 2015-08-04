@@ -17,6 +17,10 @@
 		12254ECA1B13559A0098C160 /* AMPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12254EC91B13559A0098C160 /* AMPhotoCell.m */; };
 		12254ECE1B135A4D0098C160 /* AMPhotoCollectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 12254ECD1B135A4D0098C160 /* AMPhotoCollectionHeader.m */; };
 		12254ED21B135F190098C160 /* AMPhotoCollectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 12254ED11B135F190098C160 /* AMPhotoCollectionFooter.m */; };
+		1A4F27FF1B70AC8600C4BC13 /* AMPhotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F27FE1B70AC8600C4BC13 /* AMPhotoService.m */; };
+		1A4F28041B70BB5F00C4BC13 /* AMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F28031B70BB5F00C4BC13 /* AMDetailViewController.m */; };
+		1A4F28081B70EAFA00C4BC13 /* AMPresentDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F28071B70EAFA00C4BC13 /* AMPresentDetailTransition.m */; };
+		1A4F280B1B70F08300C4BC13 /* AMDismissDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F280A1B70F08300C4BC13 /* AMDismissDetailTransition.m */; };
 		62D8D32E209E892C3F5B51C9 /* libPods-Photo Bombers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0E2381B2F53E6B5E78E666 /* libPods-Photo Bombers.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +55,16 @@
 		12254ED01B135F190098C160 /* AMPhotoCollectionFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPhotoCollectionFooter.h; path = ViewControllers/AMPhotoCollectionFooter.h; sourceTree = "<group>"; };
 		12254ED11B135F190098C160 /* AMPhotoCollectionFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPhotoCollectionFooter.m; path = ViewControllers/AMPhotoCollectionFooter.m; sourceTree = "<group>"; };
 		19C1F0402F72426D9F9913F6 /* Pods-Photo Bombers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo Bombers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Photo Bombers/Pods-Photo Bombers.release.xcconfig"; sourceTree = "<group>"; };
+		1A4738A21B6F7042009A2AF5 /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Logging.h; path = Utils/Logging.h; sourceTree = "<group>"; };
+		1A4738A41B6F7268009A2AF5 /* photo-bombers-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "photo-bombers-Prefix.pch"; sourceTree = "<group>"; };
+		1A4F27FD1B70AC8600C4BC13 /* AMPhotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPhotoService.h; path = Network/AMPhotoService.h; sourceTree = "<group>"; };
+		1A4F27FE1B70AC8600C4BC13 /* AMPhotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPhotoService.m; path = Network/AMPhotoService.m; sourceTree = "<group>"; };
+		1A4F28021B70BB5F00C4BC13 /* AMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMDetailViewController.h; path = ViewControllers/AMDetailViewController.h; sourceTree = "<group>"; };
+		1A4F28031B70BB5F00C4BC13 /* AMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMDetailViewController.m; path = ViewControllers/AMDetailViewController.m; sourceTree = "<group>"; };
+		1A4F28061B70EAFA00C4BC13 /* AMPresentDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMPresentDetailTransition.h; path = Utils/AMPresentDetailTransition.h; sourceTree = "<group>"; };
+		1A4F28071B70EAFA00C4BC13 /* AMPresentDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMPresentDetailTransition.m; path = Utils/AMPresentDetailTransition.m; sourceTree = "<group>"; };
+		1A4F28091B70F08300C4BC13 /* AMDismissDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMDismissDetailTransition.h; path = Utils/AMDismissDetailTransition.h; sourceTree = "<group>"; };
+		1A4F280A1B70F08300C4BC13 /* AMDismissDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMDismissDetailTransition.m; path = Utils/AMDismissDetailTransition.m; sourceTree = "<group>"; };
 		720244D1749B6F975AEAB276 /* Pods-Photo Bombers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photo Bombers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Photo Bombers/Pods-Photo Bombers.debug.xcconfig"; sourceTree = "<group>"; };
 		AF0E2381B2F53E6B5E78E666 /* libPods-Photo Bombers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Photo Bombers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -97,6 +111,8 @@
 		12254E991B1345CA0098C160 /* Photo Bombers */ = {
 			isa = PBXGroup;
 			children = (
+				1A4F27FC1B70A80C00C4BC13 /* Network */,
+				1A4738A11B6F6394009A2AF5 /* Utils */,
 				12254EC21B13463C0098C160 /* AppDelegate */,
 				12254EC11B1346360098C160 /* Model */,
 				12254EC31B1346510098C160 /* Storyboards */,
@@ -113,6 +129,7 @@
 			children = (
 				12254E9B1B1345CA0098C160 /* Info.plist */,
 				12254E9C1B1345CA0098C160 /* main.m */,
+				1A4738A41B6F7268009A2AF5 /* photo-bombers-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,11 +154,8 @@
 		12254EC01B13462D0098C160 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				12254ECF1B135EE20098C160 /* Footer */,
-				12254ECB1B135A180098C160 /* Header */,
-				12254EC71B1355610098C160 /* Cell */,
-				12254EC41B1346A30098C160 /* AMPhotosViewControllerCollectionViewController.h */,
-				12254EC51B1346A30098C160 /* AMPhotosViewControllerCollectionViewController.m */,
+				1A4F28011B70BB3D00C4BC13 /* Detail */,
+				1A4F28001B70BB2B00C4BC13 /* Master */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +209,56 @@
 				12254ED11B135F190098C160 /* AMPhotoCollectionFooter.m */,
 			);
 			name = Footer;
+			sourceTree = "<group>";
+		};
+		1A4738A11B6F6394009A2AF5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F28051B70EAC100C4BC13 /* Transition */,
+				1A4738A21B6F7042009A2AF5 /* Logging.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		1A4F27FC1B70A80C00C4BC13 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F27FD1B70AC8600C4BC13 /* AMPhotoService.h */,
+				1A4F27FE1B70AC8600C4BC13 /* AMPhotoService.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		1A4F28001B70BB2B00C4BC13 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				12254ECF1B135EE20098C160 /* Footer */,
+				12254ECB1B135A180098C160 /* Header */,
+				12254EC71B1355610098C160 /* Cell */,
+				12254EC41B1346A30098C160 /* AMPhotosViewControllerCollectionViewController.h */,
+				12254EC51B1346A30098C160 /* AMPhotosViewControllerCollectionViewController.m */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		1A4F28011B70BB3D00C4BC13 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F28021B70BB5F00C4BC13 /* AMDetailViewController.h */,
+				1A4F28031B70BB5F00C4BC13 /* AMDetailViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		1A4F28051B70EAC100C4BC13 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				1A4F28061B70EAFA00C4BC13 /* AMPresentDetailTransition.h */,
+				1A4F28071B70EAFA00C4BC13 /* AMPresentDetailTransition.m */,
+				1A4F28091B70F08300C4BC13 /* AMDismissDetailTransition.h */,
+				1A4F280A1B70F08300C4BC13 /* AMDismissDetailTransition.m */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 		5D6B488D75D0402682C77D32 /* Pods */ = {
@@ -350,10 +414,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				12254ECE1B135A4D0098C160 /* AMPhotoCollectionHeader.m in Sources */,
+				1A4F27FF1B70AC8600C4BC13 /* AMPhotoService.m in Sources */,
 				12254ECA1B13559A0098C160 /* AMPhotoCell.m in Sources */,
+				1A4F28041B70BB5F00C4BC13 /* AMDetailViewController.m in Sources */,
+				1A4F28081B70EAFA00C4BC13 /* AMPresentDetailTransition.m in Sources */,
 				12254EA01B1345CA0098C160 /* AppDelegate.m in Sources */,
 				12254ED21B135F190098C160 /* AMPhotoCollectionFooter.m in Sources */,
 				12254EC61B1346A30098C160 /* AMPhotosViewControllerCollectionViewController.m in Sources */,
+				1A4F280B1B70F08300C4BC13 /* AMDismissDetailTransition.m in Sources */,
 				12254E9D1B1345CA0098C160 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +549,8 @@
 			baseConfigurationReference = 720244D1749B6F975AEAB276 /* Pods-Photo Bombers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Photo Bombers/photo-bombers-Prefix.pch";
 				INFOPLIST_FILE = "Photo Bombers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -492,6 +562,8 @@
 			baseConfigurationReference = 19C1F0402F72426D9F9913F6 /* Pods-Photo Bombers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Photo Bombers/photo-bombers-Prefix.pch";
 				INFOPLIST_FILE = "Photo Bombers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

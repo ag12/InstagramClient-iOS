@@ -28,10 +28,6 @@
     [self.window makeKeyAndVisible];
     
     SimpleAuth.configuration[@"instagram"] = @{@"client_id" : @"c7f8546eca7e474d99d1be0292acafed", SimpleAuthRedirectURIKey :@"http://vg.no"};
-    [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *dictionary, NSError *error) {
-        NSString *token = dictionary[@"credentials"][@"token"];
-    
-    }];
     return YES;
 }
 

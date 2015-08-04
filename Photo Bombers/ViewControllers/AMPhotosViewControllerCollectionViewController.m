@@ -11,9 +11,15 @@
 #import "AMPhotoCollectionFooter.h"
 #import "AMPhotoCell.h"
 #import <SimpleAuth.h>
+#import "AMDetailViewController.h"
+#import "AMPresentDetailTransition.h"
+#import "AMDismissDetailTransition.h"
 
-@interface AMPhotosViewControllerCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@interface AMPhotosViewControllerCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIViewControllerTransitioningDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSArray *photos;
 @end
 
 @implementation AMPhotosViewControllerCollectionViewController
@@ -22,6 +28,7 @@ static NSString * const reuseIdentifier = @"photo";
 
 
 - (void)viewDidLoad {
+
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(106.0f, 106.0f);
     layout.minimumInteritemSpacing = 1.0f;
@@ -38,19 +45,44 @@ static NSString * const reuseIdentifier = @"photo";
     //[self.collectionView registerClass:[AMPhotoCollectionHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     //[self.collectionView registerClass:[AMPhotoCollectionFooter class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
     self.title = @"Photo Bombers";
-    [self download];
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults objectForKey:@"accessToken"];
+
+    if (self.accessToken == nil) {
+
+        [SimpleAuth authorize:@"instagram" options:@{@"scope": @[@"likes", @"comments"]} completion:^(NSDictionary *dictionary, NSError *error) {
+            LogTrace(dictionary[@"credentials"][@"token"]);
+            self.accessToken = dictionary[@"credentials"][@"token"];
+            if (self.accessToken != nil) {
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:self.accessToken forKey:@"accessToken"];
+                [userDefaults synchronize];
+                [self downloadFromInstagram];
+            }
+
+        }];
+    } else {
+        [self downloadFromInstagram];
+    }
+
 }
 
-- (void)download {
+- (void)downloadFromInstagram {
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/netlight/media/recent?access_token=%@", self.accessToken]]];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSLog(@"response %@", response);
-        NSLog(@"location %@", location);
+        NSLog(@"RES %@", response);
         if (!error) {
-            NSString *downloadString = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-            NSLog(@"RESPONSE: %@", downloadString);
+            NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            //NSString *downloadString = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+            self.photos = [responseDictionary valueForKeyPath:@"data"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 [self.collectionView reloadData];
+            });
+        } else if (error) {
         }
     }];
     [task resume];
@@ -60,7 +92,8 @@ static NSString * const reuseIdentifier = @"photo";
 #pragma mark - datasource 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+
+    return [self.photos count];
 }
 
 #pragma mark - delegate
@@ -68,8 +101,32 @@ static NSString * const reuseIdentifier = @"photo";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AMPhotoCell *cell = (AMPhotoCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
+    cell.photo = self.photos[indexPath.row];
     return cell;
 }
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSDictionary *photo = self.photos[indexPath.row];
+    AMDetailViewController *detailViewController = [AMDetailViewController new];
+    detailViewController.modalPresentationStyle = UIModalPresentationCustom;
+    detailViewController.transitioningDelegate = self;
+    detailViewController.photo = photo;
+
+    [self presentViewController:detailViewController animated:YES completion:nil]; 
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    return [AMPresentDetailTransition new];
+
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [AMDismissDetailTransition new];
+}
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 /*
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *reusableview = nil;
