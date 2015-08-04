@@ -71,7 +71,7 @@ static NSString * const reuseIdentifier = @"photo";
 - (void)downloadFromInstagram {
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/netlight/media/recent?access_token=%@", self.accessToken]]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/tags/dgbn/media/recent?access_token=%@", self.accessToken]]];
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         NSLog(@"RES %@", response);
         if (!error) {
