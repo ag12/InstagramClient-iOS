@@ -18,7 +18,7 @@
     UIViewController *destinationViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 
 
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         destinationViewController.view.alpha = 0.0f;
     } completion:^(BOOL finished) {
         [destinationViewController.view removeFromSuperview];
@@ -29,7 +29,7 @@
 #pragma mark - duration
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return 0.5;
+    return 0.3f;
 }
 
 

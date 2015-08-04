@@ -11,6 +11,7 @@
 
 @interface AMDetailViewController ()
 @property (nonatomic) UIImageView *imageView;
+@property (nonatomic) UIDynamicAnimator *animator;
 @end
 
 @implementation AMDetailViewController
@@ -19,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.90]];
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, -320, -320, 320)];
     [self.view addSubview:self.imageView];
 
     [AMPhotoService imageForPhoto:self.photo size:@"standard_resolution" completion:^(UIImage *image) {
@@ -28,6 +29,18 @@
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     [self.view addGestureRecognizer:tap];
+
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+
+
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.imageView snapToPoint:self.view.center];
+    [self.animator addBehavior:snap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +57,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+/*
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
@@ -54,8 +68,13 @@
 
 
 
-}
+}*/
 - (void)dismiss {
+    [self.animator removeAllBehaviors];
+
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.imageView snapToPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) + 180.0f)];
+    [self.animator addBehavior:snap];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
